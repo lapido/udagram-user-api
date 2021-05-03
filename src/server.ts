@@ -31,6 +31,9 @@ import { V0MODELS } from './controllers/v0/model.index';
     res.send( "/api/v0/" );
   } );
   
+  app.get('/health', async (req, res ) => {    
+    res.send(`up`);
+  });
 
   // Start the Server
   app.listen( port, () => {
