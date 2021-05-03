@@ -9,11 +9,12 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies in Docker
-RUN npm install
+RUN npm ci
 
-ADD . /usr/src/app
+# ADD . /usr/src/app
+COPY . .
 
-RUN npm run build
+# RUN npm run build
 
 # # Copy app from local environment into the Docker image
 # COPY www/ .
@@ -21,5 +22,5 @@ RUN npm run build
 # Set the API’s port number
 EXPOSE 8080
 
-# Define Docker’s behavior when the image is run
-CMD ["tsc", "&&", "node", "./www/server.js"]
+
+CMD ["npm", "run", "prod"]
