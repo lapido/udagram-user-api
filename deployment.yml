@@ -3,23 +3,36 @@ kind: Deployment
 metadata:
   name: udagram-user-api
   labels:
-    app: udagram-user-api
+    service: udagram-user-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: udagram-user-api
+      service: udagram-user-api
   template:
     metadata:
       labels:
-        app: udagram-user-api
+        service: udagram-user-api
     spec:
       containers:
       - name: udagram-user-api
         image: swissvic/udagram-user-api
+        env:
+          - name: POSTGRES_USERNAME
+            value: victordev
+          - name: POSTGRES_PASSWORD
+            value: Password12
+          - name: POSTGRES_DATABASE
+            value: udagramvictordev
+          - name: POSTGRES_HOST
+            value: udagramvictordev.cvizerg6wgrh.us-west-2.rds.amazonaws.com
+          - name: AWS_REGION
+            value: eu-west-2
+          - name: AWS_PROFILE
+            value: default
+          - name: AWS_MEDIA_BUCKET
+            value: awsclouddeveloper-dev
+          - name: PORT
+            value: '8080'
         ports:
-        - containerPort: 80
-      livenessProbe:
-        httpGet:
-          path: /health
-          port:8080
+        - containerPort: 8080

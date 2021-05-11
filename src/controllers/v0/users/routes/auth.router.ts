@@ -85,7 +85,7 @@ router.post('/login', async (req: Request, res: Response) => {
 
     // Generate JWT
     const jwt = generateJWT(user);
-
+    console.log(new Date().toLocaleString() + `: ${user.short()} logged in success`);
     res.status(200).send({ auth: true, token: jwt, user: user.short()});
 });
 
@@ -126,7 +126,7 @@ router.post('/', async (req: Request, res: Response) => {
 
     // Generate JWT
     const jwt = generateJWT(savedUser);
-
+    console.log(new Date().toLocaleString() + `: ${savedUser.short()} signup success`);
     res.status(201).send({token: jwt, user: savedUser.short()});
 });
 
