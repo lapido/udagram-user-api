@@ -34,5 +34,7 @@ spec:
             value: awsclouddeveloper-dev
           - name: PORT
             value: '8080'
+          - name: FE_URL
+            value: http://a140fe6198c914d9da47684c99510d5e-1335044447.eu-west-2.elb.amazonaws.com:8100
         ports:
         - containerPort: 8080
